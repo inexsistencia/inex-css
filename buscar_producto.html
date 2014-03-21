@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>this</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	
+
+	<!--LINKS graficos -->
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<link rel="apple-touch-icon" href="bookmark-icon.png" />
+	<!-- /*/*/*/*/*/*/ -->
+
+	<!--LINKS ESTILOS -->
+		<link rel='stylesheet' href='css/inex-reset.css' />	    
+		<link rel='stylesheet' href='css/default.css' />
+		<link rel='stylesheet' href='css/default-b.css' />
+		<link rel='stylesheet' href='css/formularios.css' />
+		<link rel='stylesheet' href='css/mediaquery.css' />
+		<link rel="stylesheet" href="menu-4.css" type="text/css">
+		<style type="text/css">
+			body{letter-spacing: 1px;}
+			input{margin-top: .6em; display: inline-block; width: 40%;}
+			input[type="radio"]{width: 20%;}
+			input[type="submit"]{color:#c00;}
+			b{font-size: 1.8em;color:#e11;}
+			.label {font-size: 1.2em; display: inline-block; width: 40%;}
+			#page{		
+				display: block;
+				margin:.5em auto;
+				}
+			.thumb {
+		    width: 98%;
+		    border: 1px solid #000;
+		    margin: 10px 5px 0 0;
+		  	}
+
+		</style>
+	<!-- /*/*/*/*/*/*/ -->
+
+	<!--SCRIPTS Y PLUGINS-->
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
+		<script>
+			!window.JQuery && document.write("<script src='js/jquery.min.js'><\/script>");
+		</script>
+		<script>
+	        function buscar(){
+			$('#resultadoBusqueda').html('<br /><img src="../img/loading.gif" height=80>');
+				setTimeout(function(){
+					$.ajax({
+						type:'GET',
+						url:'includes/producto_buscar.php',
+						data:{nombre:$('#txtCriterio').val()},
+						success: function(datos){
+						$('#resultadoBusqueda').html(datos);
+	                }
+	            });},1000);
+	        }
+	    </script>
+		<script type="text/javascript" src="js/publicar-post.js" ></script>
+	<!-- /*/*/*/*/*/*/ -->
+</head>
+
+<body>
+	<section class='page w80 bg-b' id="page" >
+	<section id="header" class="box">
+		<header id="header" class="box">
+			<div class="w15"><img src="http://www.sirenasxmayor.com.ar/s/img/logo.png" alt="" id="logo" class="ibox"></div>		
+		</header>
+	</section>
+	<nav class="menu">
+		<ul>
+			<li class="nivel1" tabindex="1"><span class="nivel1" id='agregar-menu'><a href="agregar_producto.html">agregar</a></span></li>
+			<li class="nivel1" tabindex="2"><span class="nivel1"id='editar-menu'><a href="editar_producto.html">editar</a></span></li>
+			<li class="nivel1" tabindex="3"><span class="nivel1" id='buscar-menu'><a href="buscar_producto.html">buscar</a></span></li>
+			<li class="nivel1" tabindex="5"><span class="nivel1">clasicos</span>
+				<ul class="cinco">
+					<li><a href="#">aros</a></li>
+					<li><a href="#">collares</a></li>
+					<li><a href="#">pulseras</a></li>
+					<li><a href="#">anillos</a></li>
+					<li><a href="http://www.idplus.org/">accesorios</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<section class='ibox'>
+		<section id="form-buscar">
+			<form action="" class=''>
+				<h1 class='c bg-y'>BUSCAR PRODUCTO</h1>
+				<section  class='box'>
+					<div class='ibox w30'>ingresar codigo</div>
+					<input type='text' value='' name='txtCriterio' id='txtCriterio' class=' ibox w30' placeholder='ej: 20' />
+					<input type="button" value="buscar" id="btnEnviar" onclick="buscar()" class='ibox w30'/>
+				</section>
+			</form>
+			<section id="resultadoBusqueda"></section>
+		</section>
+	</section>
+</section>
+</body>
+</html>

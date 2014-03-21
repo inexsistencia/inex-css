@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>PRODUCTOS</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	
+
+	<!--LINKS graficos -->
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<link rel="apple-touch-icon" href="bookmark-icon.png" />
+	<!-- /*/*/*/*/*/*/ -->
+
+	<!--LINKS ESTILOS -->
+		<link rel='stylesheet' href='http://sirenasxmayor.com.ar/inex_css/inex-reset.css' />	    
+		<link rel='stylesheet' href='http://sirenasxmayor.com.ar/inex_css/default.css' />
+		<link rel='stylesheet' href='http://sirenasxmayor.com.ar/inex_css/default-b.css' />
+		<link rel='stylesheet' href='http://sirenasxmayor.com.ar/inex_css/formularios.css' />
+		<link rel='stylesheet' href='http://sirenasxmayor.com.ar/inex_css/mediaquery.css' />
+		<link rel="stylesheet" href="menu-4.css" type="text/css">
+		<style type="text/css">
+			body{letter-spacing: 1px;}
+			input{margin-top: .6em; display: inline-block; width: 40%;}
+			input[type="radio"]{width: 20%;}
+			input[type="submit"]{color:#c00;}
+			select{width: 98%;}
+			b{font-size: 1.8em;color:#e11;}
+			.label {font-size: 1.2em; display: inline-block; width: 40%;}
+			#page{		
+				display: block;
+				margin:.5em auto;
+				}
+			.thumb {
+		    width: 98%;
+		    border: 1px solid #000;
+		    margin: 10px 5px 0 0;
+		  	}
+		  	#subir-csv{
+		  		padding: .5em;
+		  		font-size: 1.2em;
+		  	}
+		  	#subir-csv:hover{
+		  		color: #fff;
+		  	}
+			#form-editar{
+				display: none;
+			}
+			#form-buscar{
+				display: none;
+			}
+			#form-agregar{
+				display: none;
+			}
+		</style>
+	<!-- /*/*/*/*/*/*/ -->
+
+	<!--SCRIPTS Y PLUGINS-->
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
+		<script>
+			!window.JQuery && document.write("<script src='js/jquery.min.js'><\/script>");
+		</script>
+		<script>
+			$(function(){
+				$('#subir_csv').click(function(){					
+						$('#form-agregar').hide("slow");
+						$('#form-buscar').hide("slow");
+						$('#form-editar').hide("slow");
+						$('#form-subir-csv').show("slow");					
+					});
+				$('#editar-menu').click(function(){	
+						$('#form-subir-csv').hide("slow");				
+						$('#form-agregar').hide("slow");
+						$('#form-buscar').hide("slow");
+						$('#form-editar').show("slow");
+					});
+				$('#agregar-menu').click(function(){
+						$('#form-subir-csv').hide("slow");
+						$('#form-editar').hide("slow");
+						$('#form-buscar').hide("slow");
+						$('#form-agregar').show("slow");
+					});
+				$('#buscar-menu').click(function(){
+						$('#form-subir-csv').hide("slow");
+						$('#form-editar').hide("slow");
+						$('#form-agregar').hide("slow");
+						$('#form-buscar').show("slow");
+					});
+			});
+		</script>
+		<script>
+	      /*  function buscar(){
+			$('#resultadoBusqueda').html('<br /><img src="../img/loading.gif" height=80>');
+				setTimeout(function(){
+					$.ajax({
+						type:'GET',
+						url:'includes/producto_buscar.php',
+						data:{nombre:$('#txtCriterio').val()},
+						success: function(datos){
+						$('#resultadoBusqueda').html(datos);
+	                }
+	            });},1000);
+	        }
+
+	        function subir_csv(){
+			$('#resultadoBusqueda').html('<br /><img src="../img/loading.gif" height=80>');
+				setTimeout(function(){
+					$.ajax({
+						type:'POST',
+						url:'subir_csv-v2.php',
+						data:data,
+						success: function(datos){
+						$('#resultadoBusqueda').html(datos);
+	                }
+	            });},1000);
+	        }*/
+	    </script>
+		<script type="text/javascript" src="js/publicar-post.js" ></script>
+	<!-- /*/*/*/*/*/*/ -->
+</head>
+
+<body>
+	<section class='page w80 bg-b' id="page" >
+	<section id="header" class="box">
+		<header id="header" class="box">
+			<div class="w15"><img src="http://www.sirenasxmayor.com.ar/s/img/logo.png" alt="" id="logo" class="ibox"></div>		
+		</header>
+	</section>
+	<nav class="menu">
+		<ul>
+			<li class="nivel1" tabindex="1"><span class="nivel1" id='subir_csv'>subir CSV</span></li>
+			<li class="nivel1" tabindex="1"><span class="nivel1" id='agregar-menu'>agregar</span></li>
+			<li class="nivel1" tabindex="2"><span class="nivel1"id='editar-menu'>editar</span></li>
+			<li class="nivel1" tabindex="3"><span class="nivel1" id='buscar-menu'>buscar</span></li>
+			<li class="nivel1" tabindex="5"><span class="nivel1">clasicos</span>
+				<ul class="cinco">
+					<li><a href="#">aros</a></li>
+					<li><a href="#">collares</a></li>
+					<li><a href="#">pulseras</a></li>
+					<li><a href="#">anillos</a></li>
+					<li><a href="http://www.idplus.org/">accesorios</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<section class='ibox'>
+		<section id="form-subir-csv">
+			<form method="post" action="subir_csv-v2.php" enctype="multipart/form-data" class=''  >
+				<h1 class="c bg-g">SUBIR CSV</h1>
+				<section class="ibox w100 bg-g">
+					<div class='label bg-r'>seleccisione el archivo a subir</div>
+					<input  type='file' value='' id='orden-prod' name='archivo-csv' class='w50' placeholder='ej: 20' />
+					<div class='ibox label w50 bg-r'>Elegir Familia</div>
+					<div class="ibox w50">
+						<select name="familia">
+							<option selected>--- familia la familia a subir ---</option>
+							<option>aros</option>
+							<option>anillos</option>
+							<option>collares</option>
+							<option>pulseras</option>
+							<option>accesorios</option>
+							<option>broches</option>
+							<option>carteras</option>
+							<option>textil</option>
+							<option>sombreros</option>
+							<option>collar</option>
+							<option>collar</option>
+						</select>
+					</div>
+					<input type="submit" value="SUBIR CSV" id='subir-csv'class='box w70 bg-r' onclick='subir_csv()'/>
+				</section>
+			</form>
+		</section>
+		<section id='form-agregar'>	
+			<form action="" class='' >
+				<h1 class='c bg-g'>AGREGAR PRODUCTO</h1>
+				<section  class='ibox w70 bg-g'>
+					<div class='label'>orden manual</div><input type='text' value='' id='orden-prod' name='orden-prod' class='w50' placeholder='ej: 20' />
+					<section class='bg-r'>
+						<div class='label'>codigo</div><input type='text' value='' id='codigo-prod' name='codigo-prod' class='w50' placeholder='codigo ej:617-0125' required/>
+						<div class='label'>familia</div><input type='text' value='' id='familia-prod' name='familia-prod' class='w50' placeholder='familia ej:CARTERA' required/>
+						<div class='label'>nombre</div><input type='text' value='' id='nombre-prod' name='nombre-prod' class='w50' placeholder='ej:MOCHILITA' required/>
+						<div class='label'>cantidad pack</div><input type='text' value='' id='cantidad-pack' name='cantidad-pack' class='w50' placeholder='ej: 3' required/>
+						<div class='label'>precio unidad</div><b>$</b><input type='text' value='' id='precio-prod' name='precio-prod' class='w45' placeholder='ej: 68' required/>
+						<div class='label'>foto</div><input type='file' id="files-agregar" name="files[]"  name='descripcion-prod' class='w50' placeholder='ej: alguna otra sarasa' required/>
+						<div class='label'>visible</div>
+						<div class='ibox w50'>
+							<div class="ibox w40 l"><b>SI</b><input type='radio' value='1' id='visible-prod' name='visible-prod' class='CLASE' checked='checked' /></div>
+							<div class="ibox w40 r"><input type='radio' value='0' id='visible-prod' name='visible-prod' class='CLASE' placeholder='PH' /><b>NO</b></div>
+						</div>
+					</section>
+					<div class='label'>porcentaje de aumento</div><b>%</b><input type='text' value='' id='porcentaje-aumento-prod' name='porcentaje-aumento-prod' class='w45' placeholder='ej: 21' />
+					<div class='label'>medidas</div><input type='text' value='' id='medida-prod' name='medida-prod' class='w50' placeholder='ej: dimensiones: 45cm x 50cm' />
+					<div class='label'>materiales</div><input type='text' value='' id='material-prod' name='material-prod' class='w50' placeholder='ej: cuero ecologico' />
+					<div class='label'>descripcion</div><input type='text' value='' id='descripcion-prod' name='descripcion-prod' class='w50' placeholder='ej: alguna otra sarasa' />			
+					<div class='label'>stock</div><input type='text' value='' id='stock-prod' name='stock-prod' class='w50' placeholder='ej: 20' />
+					<div class='label'>temporada</div><input type='text' value='' id='temporada-prod' name='temporada-prod' class='w50' placeholder='ej:verano 2014' />			
+					<div class='label'>precio costo</div><b>€</b><input type='text' value='' id='precio-costo-prod' name='precio-costo-prod' class='w45' placeholder='ej: 68' />
+				</section>
+				<section class='ibox w25 bg-g'>
+					<output id='list-agregar' class='box w100'></output>
+					<input type="submit" value="agregar" class='box w100 bg-r'>
+				</section>
+			</form>
+		</section>
+		<section  id='form-editar'>
+			<form action="" class=''>
+				<h1 class='c bg-r'>EDITAR PRODUCTO</h1>
+				<section  class='ibox w70'>
+					<div class='label'>orden manual</div><input type='text' value='' id='orden-prod' name='orden-prod' class='w50' placeholder='ej: 20' />
+					<section class=''>
+						<div class='label'>codigo</div><input type='text' value='' id='codigo-prod' name='codigo-prod' class='w50' placeholder='codigo ej:617-0125' required/>
+						<div class='label'>familia</div><input type='text' value='' id='familia-prod' name='familia-prod' class='w50' placeholder='familia ej:CARTERA' required/>
+						<div class='label'>nombre</div><input type='text' value='' id='nombre-prod' name='nombre-prod' class='w50' placeholder='ej:MOCHILITA' required/>
+						<div class='label'>cantidad pack</div><input type='text' value='' id='cantidad-pack' name='cantidad-pack' class='w50' placeholder='ej: 3' required/>
+						<div class='label'>precio unidad</div><b>$</b><input type='text' value='' id='precio-prod' name='precio-prod' class='w45' placeholder='ej: 68' required/>
+						<div class='label'>foto</div><input type='file' id="files-agregar" name="files[]"  name='descripcion-prod' class='w50' placeholder='ej: alguna otra sarasa' required/>
+						<div class='label'>visible</div>
+						<div class='ibox w50'>
+							<div class="ibox w40 l"><b>SI</b><input type='radio' value='1' id='visible-prod' name='visible-prod' class='CLASE' checked='checked' /></div>
+							<div class="ibox w40 r"><input type='radio' value='0' id='visible-prod' name='visible-prod' class='CLASE' placeholder='PH' /><b>NO</b></div>
+						</div>
+					</section>
+					<div class='label'>porcentaje de aumento</div><b>%</b><input type='text' value='' id='porcentaje-aumento-prod' name='porcentaje-aumento-prod' class='w45' placeholder='ej: 21' />
+					<div class='label'>medidas</div><input type='text' value='' id='medida-prod' name='medida-prod' class='w50' placeholder='ej: dimensiones: 45cm x 50cm' />
+					<div class='label'>materiales</div><input type='text' value='' id='material-prod' name='material-prod' class='w50' placeholder='ej: cuero ecologico' />
+					<div class='label'>descripcion</div><input type='text' value='' id='descripcion-prod' name='descripcion-prod' class='w50' placeholder='ej: alguna otra sarasa' />			
+					<div class='label'>stock</div><input type='text' value='' id='stock-prod' name='stock-prod' class='w50' placeholder='ej: 20' />
+					<div class='label'>temporada</div><input type='text' value='' id='temporada-prod' name='temporada-prod' class='w50' placeholder='ej:verano 2014' />			
+					<div class='label'>precio costo</div><b>€</b><input type='text' value='' id='precio-costo-prod' name='precio-costo-prod' class='w45' placeholder='ej: 68' />
+				</section>
+				<section class='ibox w25 bg-g'>
+					<output id='list-agregar' class='box w100'></output>
+					<input type="submit" value="agregar" class='box w100 bg-r'>
+				</section>
+			</form>
+		</section>
+		</section>
+		<section id="form-buscar">
+			<form action="" class=''>
+				<h1 class='c bg-y'>BUSCAR PRODUCTO</h1>
+				<section  class='box'>
+					<div class='ibox w30'>ingresar codigo</div>
+					<input type='text' value='' name='txtCriterio' id='txtCriterio' class=' ibox w30' placeholder='ej: 20' />
+					<input type="button" value="buscar" id="btnEnviar" onclick="buscar()" class='ibox w30'/>
+				</section>
+			</form>
+			<section id="resultadoBusqueda"></section>
+		</section>
+	</section>
+</section>
+</body>
+</html>

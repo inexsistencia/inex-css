@@ -1,0 +1,105 @@
+
+.menu {  
+	display: block;
+	text-align: center;
+	font-size: 0.7em;
+	width: 820px;
+	min-height: 25px;
+	margin: 0 auto;
+	padding: .5em;
+	position: relative;
+	z-index: 3;
+	}
+
+
+.menu ul {list-style-type: none;}
+
+
+.menu ul li.nivel1 { 
+	float: left;
+	width: 162px;
+	margin-right: 2px;
+	position: relative;
+	}
+
+
+.menu ul li { float: left;width: 20%;}
+
+
+.menu ul li a, 
+.menu ul li span {
+	/*background-color: #399;*/
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	color: #000;
+	display: inline-block;
+	transition: all 0.3s ease-out;
+	font-size: 1.17em;
+	padding: 4px 4px;
+	position: relative;
+	text-decoration: none;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+	}
+
+
+a:active {position: relative;}
+
+
+.menu ul li a:active {
+	/*background-color: #6CC;*/
+	color: #000;
+	border-bottom: solid 1px #6CC;
+	position: relative;
+	}
+
+
+.menu ul li span.nivel1 {display: block;}
+
+.menu ul li:hover span.nivel1 {cursor: pointer;}
+
+.menu ul li ul {display: none;}
+
+.menu ul li a:hover ul, 
+.menu ul li a:active ul {
+	display: block;
+	position: absolute;
+	width: 816px;
+	border: solid 1px #fff;
+	border-top: none;
+	/*background-color: #6CC;*/
+	}
+
+.menu ul li a:hover:link ul {visibility: hidden;}
+
+.menu ul li a:active:hover ul  {visibility: visible;}
+
+.menu ul li ul li a {width: 160px;
+	padding: 6px 0px 8px 0px;
+	border: none;
+	/*background-color: #6CC;*/
+	font-weight: normal;
+	}
+
+.menu ul li ul li a:hover {
+	position: relative;
+	text-decoration: underline;
+	border-bottom: none;
+	color: #000;
+	}
+
+table.falsa {border-collapse:collapse;
+border:0px;
+float: left;
+position: relative;
+}
+
+ul.uno {left: -0px;}
+
+ul.dos {left: -164px;}
+
+ul.tres {left: -328px;}
+
+ul.cuatro {left: -492px;}
+
+ul.cinco {left: -656px;}
